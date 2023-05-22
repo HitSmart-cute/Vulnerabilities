@@ -1,5 +1,6 @@
-# Vulnerabilities
+# LooneyLottery
 Vulnerabilities found by HitSmart-cute
+https://etherscan.io/address/0x2ef76694fbfd691141d83f921a5ba710525de9b0#code
 
 ```
 /**
