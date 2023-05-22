@@ -2,11 +2,11 @@
 Vulnerabilities found by HitSmart-cute
 https://etherscan.io/address/0x2ef76694fbfd691141d83f921a5ba710525de9b0#code
 
-```
-/**
- *Submitted for verification at Etherscan.io on 2016-03-24
-*/
+## Abstract
+We found a vulnerability in smart contract of "LooneyLottery" which is an Ethereum lottery game. The ownerWithdraw() function allows the owner of the contract to transfer Ether from the contract to his own account by collecting fees multiple times.
 
+## Source code
+```
 // LooneyLottery that pays out the full pool once a day
 //
 // git: https://github.com/thelooneyfarm/contracts/tree/master/src/lottery
