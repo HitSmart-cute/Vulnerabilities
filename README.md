@@ -5,6 +5,24 @@ https://etherscan.io/address/0x2ef76694fbfd691141d83f921a5ba710525de9b0#code
 ## Abstract
 We found a vulnerability in smart contract of "LooneyLottery" which is an Ethereum lottery game. The ownerWithdraw() function allows the owner of the contract to transfer Ether from the contract to his own account by collecting fees multiple times.
 
+## Details
+"LooneyLottery" is an Ethereum lottery game. The ownerWithdraw() function allows the owner of the contract to withdraw fees. Normally there should be a fee at the end of each round. However,  the malicious owner can call the function ownerWithdraw() repeatedly to get fees.
+
+## Exploit
+The owner of the contract calls function ownerWithdraw() multiple times until "this.balance < numtickets * CONFIG_PRICE".
+```
+  // owner withdrawal of fees
+  function ownerWithdraw() owneronly public {
+    // calculate the fees collected previously (excluding current round)
+    uint fees = this.balance - (numtickets * CONFIG_PRICE);
+
+    // return it if we have someting
+    if (fees > 0) {
+      owner.call.value(fees)();
+    }
+  }
+```
+
 ## Source code
 ```
 // LooneyLottery that pays out the full pool once a day
